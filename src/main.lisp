@@ -44,12 +44,12 @@
                             *config-dir-root*))))
   *config-dir-root*)
 
-(defvar *key-value* (make-hash-table))
+(defvar *key-value* (make-hash-table :test #'equal))
 
 (defun set-key-value (plist)
   (let ((name (car plist))
         (args (cdr plist)))
-    (setf (gethash name
+    (setf (gethash (symbol-to-lower-string name)
                    *key-value*)
           (if-return (getf args :default)
             (when-let (type (getf args :type))
@@ -80,7 +80,7 @@
 
 (defun json-to-config (json)
   (dolist (i json)
-    (let ((j-key (read-from-string (car i)))
+    (let ((j-key (car i))
           (value (cdr i)))
       (multiple-value-bind (l-value havep) (gethash j-key
                                                     *key-value*)
