@@ -6,9 +6,11 @@
    :defconfig
 
    :refersh-config
-   
+
    :get-config
-   :set-config))
+   :set-config
+
+   :get-data-path))
 (in-package :easy-config)
 
 (defvar *config-name* nil)
@@ -110,6 +112,9 @@
             value)
       (save-config)
       l-value)))
+
+(defun get-data-path ()
+  *data-dir*)
 
 (defun test ()
   (defconfig (:connect-any)
