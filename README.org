@@ -1,0 +1,35 @@
+* Easy-Config
+
+** 使用
+
+*** 定义配置
+:connect-any 是配置文件夹名字.根据以下配置,将会在用户主目录下创建.connect-any目录
+#+begin_src lisp
+  (defconfig (:connect-any)
+      ((name :type :str :default "")
+       (id :type :number)
+       (host :type :bool)
+       (applelist :type :array)))
+#+end_src
+
+***** 类型
+1. :str
+2. :number
+3. :bool
+4. :array
+
+*** 获取配置项和定义新的值
+#+begin_src lisp
+  (get-config 'name)
+#+end_src
+
+#+begin_src lisp
+  (set-config 'name "hello")
+#+end_src
+
+** 安装
+*** 依赖
+#+begin_src bash
+  git clone git@github.com:lizqwerscott/lzputils.git
+  git clone https://github.com/lizqwerscott/lzputils.git
+#+end_src

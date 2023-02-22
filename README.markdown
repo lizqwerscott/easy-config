@@ -1,0 +1,5 @@
+# Easy-Config
+
+## Usage
+
+## Installation
